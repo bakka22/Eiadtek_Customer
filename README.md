@@ -6,8 +6,9 @@ A modern Flutter-based mobile application that allows customers to easily manage
 
 ---
 
-🖥️ **Landing Page:** [Eiadtek Customer on GitHub Pages](https://bakka22.github.io/Eiadtek_Customer/)  
+🖥️ **Landing Page:** [Eiadtek Customer](https://bakka22.github.io/Eiadtek_Customer/)  
 📦 **Source Code:** [GitHub Repository](https://github.com/bakka22/Eiadtek_Customer)
+🖥️ **App Backend:** [Eiadtek Backend] (https://github.com/bakka22/Eiadtek_BackEnd)
 
 ---
 
