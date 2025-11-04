@@ -6,7 +6,7 @@
   <title>Eiadtek Customer App</title>
   <style>
     :root {
-      --primary: #0055a5;
+      --primary: #015560;
       --secondary: #0077cc;
       --light: #f9f9f9;
       --dark: #222;
@@ -66,6 +66,27 @@
       background: #003f78;
       color: white;
     }
+
+  /* Gallery Section */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
 
     /* Features Section */
     section {
@@ -145,39 +166,53 @@
   <!-- HERO -->
   <header>
     <!-- Replace with your app icon or logo -->
-    <img src="https://raw.githubusercontent.com/bakka22/Eiadtek_Customer/main/assets/icon/icon.png" alt="Eiadtek Logo" onerror="this.style.display='none'">
-    <h1>Eiadtek Customer App</h1>
+    <img src="https://raw.githubusercontent.com/bakka22/Eiadtek_Customer/main/assets/logo.png" alt="Eiadtek Logo" onerror="this.style.display='none'">
+    <h1>Eiadtek</h1>
     <p>
-      Manage your appointments, services, and customer interactions easily with the Eiadtek Customer App — built with Flutter for speed, security, and simplicity.
+      Find your doctor, Pharmacy and all your Medical Services in one App.
     </p>
     <div class="btn-group">
       <a href="https://github.com/bakka22/Eiadtek_Customer" target="_blank">View on GitHub</a>
-      <a href="#" target="_blank">Download APK</a>
+      <a href="https://drive.google.com/file/d/1I6Qglep-by6MMmqw6E_gT8_UL67RlbUz/view?usp=sharing" target="_blank">Download APK</a>
     </div>
   </header>
 
+    <!-- SCREENSHOTS -->
+  <section>
+    <h2>📸 App Screenshots</h2>
+    <div class="gallery">
+      <img src="assets/screenshots_1.png" alt="App Screenshot 1">
+      <img src="assets/screenshots_2.png" alt="App Screenshot 2">
+      <img src="assets/screenshots_3.png" alt="App Screenshot 3">
+      <img src="assets/screenshots_4.png" alt="App Screenshot 4">
+      <img src="assets/screenshots_5.png" alt="App Screenshot 5">
+      <img src="assets/screenshots_6.png" alt="App Screenshot 6">
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section>
-    <h2>✨ Features</h2>
+    <h2>💡 Key Features</h2>
     <div class="features">
       <div class="feature">
-        <h3>📱 Cross-Platform</h3>
-        <p>Runs on Android, iOS, and Web — all from a single Flutter codebase.</p>
+        <h3>📅 Smart Appointment Booking</h3>
+        <p>Book, reschedule, and manage appointments with just a few taps — no calls, no waiting.</p>
       </div>
       <div class="feature">
-        <h3>🔐 Secure Authentication</h3>
-        <p>Protects user data with modern login and JWT-based authentication.</p>
+        <h3>🧾 Real-Time Service Updates</h3>
+        <p>Track your service status instantly and get notified the moment something changes.</p>
       </div>
       <div class="feature">
-        <h3>⚡ Fast & Responsive</h3>
-        <p>Optimized Flutter performance ensures smooth navigation and fast load times.</p>
+        <h3>🧭 Simple & Intuitive UI</h3>
+        <p>Designed for ease — clean layouts, minimal clicks, and smooth navigation on all devices.</p>
       </div>
       <div class="feature">
-        <h3>🧩 Easy to Extend</h3>
-        <p>Modular backend-ready structure, perfect for scaling and adding new features.</p>
+        <h3>🔒 Secure Login</h3>
+        <p>All user data is protected with secure authentication and encrypted communication.</p>
       </div>
     </div>
   </section>
+
 
   <!-- HOW IT WORKS -->
   <section>
