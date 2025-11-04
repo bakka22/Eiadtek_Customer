@@ -125,12 +125,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // 🔹 Helper method to build each card
+  // Helper method to build each card
   Widget _buildCard(
   BuildContext context, {
   required String title,
   required IconData icon,
-  required String imagePath, // 👈 use image instead of color
+  required String imagePath, // use image instead of color
   required VoidCallback onTap,
 }) {
   return GestureDetector(
@@ -138,14 +138,14 @@ class HomePage extends StatelessWidget {
     child: Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      clipBehavior: Clip.hardEdge, // 👈 ensures rounded corners apply to the image
+      clipBehavior: Clip.hardEdge, // ensures rounded corners apply to the image
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(imagePath), // 👈 your image file from assets
+            image: AssetImage(imagePath), // our image file from assets
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withValues(alpha: 0.5), // 👈 optional overlay for contrast
+              Colors.black.withValues(alpha: 0.5), // optional overlay for contrast
               BlendMode.darken,
             ),
           ),

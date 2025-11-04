@@ -29,7 +29,7 @@ class ClinicDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment:
-              CrossAxisAlignment.start, // Align text to the left
+              CrossAxisAlignment.start,
 
           children: [
             clinic['picture_filename'] != ''
@@ -51,7 +51,7 @@ class ClinicDetailsPage extends StatelessWidget {
                 textDirection: TextDirection.rtl,
               ),
             const SizedBox(height: 10),
-            // 📍 Clickable Location
+            //Clickable Location
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -89,7 +89,7 @@ class ClinicDetailsPage extends StatelessWidget {
                 textDirection: TextDirection.rtl,
               ),
             const SizedBox(height: 10),
-            // 📧 Clickable Email
+            // Clickable Email
             if (clinic['email'] != null && clinic['email'].isNotEmpty)
               Row(
                 children: [
@@ -115,7 +115,7 @@ class ClinicDetailsPage extends StatelessWidget {
               ),
             const SizedBox(height: 10),
 
-            // 📞 Clickable Phone
+            // Clickable Phone
             if (clinic['phone_number'] != null &&
                 clinic['phone_number'].isNotEmpty)
               Row(

@@ -112,7 +112,7 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
                               ),
                             ))
                         .toList(),
-                    value: selectedState,
+                    initialValue: selectedState,
                     onChanged: (value) {
                       setState(() {
                         selectedState = value;
@@ -144,7 +144,7 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
                               );
                             })
                             .toList(),
-                    value: selectedCity,
+                    initialValue: selectedCity,
                     onChanged: (value) {
                       setState(() => selectedCity = value);
                     },
@@ -174,7 +174,7 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
                             ),
                           )
                           .toList(),
-                      value: selectedSpecialty,
+                      initialValue: selectedSpecialty,
                       onChanged: (value) {
                         setState(() => selectedSpecialty = value);
                       },

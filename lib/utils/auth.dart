@@ -26,9 +26,6 @@ class AuthService {
         }),
       );
 
-      print(response.body);
-      print(response.statusCode);
-
       if (response.statusCode == 200) {
         return 1;
       } else {
@@ -57,9 +54,6 @@ class AuthService {
         },
       );
 
-      print("Login Response: ${response.body}");
-      print("Status Code: ${response.statusCode}");
-
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
@@ -73,7 +67,6 @@ class AuthService {
         return response.statusCode; // invalid credentials
       }
     } catch (e) {
-      print("Login error: $e");
       return 2; // network or unexpected error
     }
   }

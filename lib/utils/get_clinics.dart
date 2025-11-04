@@ -34,7 +34,6 @@ class ClinicService {
     };
 
     final response = await http.get(uri, headers: headers);
-    print(response.body);
     if (response.statusCode == 200) {
       final List<dynamic> clinics = jsonDecode(response.body);
       clinics.shuffle(Random());
@@ -73,7 +72,7 @@ class ClinicService {
     }
   }
 
-  /// ✅ Get all states with their cities
+  /// Get all states with their cities
   static Future<List<dynamic>> getStatesWithCities() async {
     final uri = Uri.parse(statesUrl);
 

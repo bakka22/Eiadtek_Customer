@@ -78,7 +78,7 @@ final List<Map<String, String>> specialties = [
   {'en': 'Oncology', 'ar': 'تخصص الاورام'},
 ];
 
- // 🧩 Helper method
+ // Helper method
    String? getArabicSpecialty(String englishName) {
     final match = specialties.firstWhere(
       (item) => item['en']?.toLowerCase() == englishName.toLowerCase(),
