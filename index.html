@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eiadtek Customer App</title>
+  <style>
+    :root {
+      --primary: #0055a5;
+      --secondary: #0077cc;
+      --light: #f9f9f9;
+      --dark: #222;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light);
+      color: #333;
+    }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      text-align: center;
+      padding: 80px 20px 100px;
+    }
+
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.5;
+    }
+
+    .btn-group a {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-group a:hover {
+      background: #003f78;
+      color: white;
+    }
+
+    /* Features Section */
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    section h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* How It Works */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      text-align: left;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <!-- Replace with your app icon or logo -->
+    <img src="https://raw.githubusercontent.com/bakka22/Eiadtek_Customer/main/assets/icon/icon.png" alt="Eiadtek Logo" onerror="this.style.display='none'">
+    <h1>Eiadtek Customer App</h1>
+    <p>
+      Manage your appointments, services, and customer interactions easily with the Eiadtek Customer App — built with Flutter for speed, security, and simplicity.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/bakka22/Eiadtek_Customer" target="_blank">View on GitHub</a>
+      <a href="#" target="_blank">Download APK</a>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section>
+    <h2>✨ Features</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>📱 Cross-Platform</h3>
+        <p>Runs on Android, iOS, and Web — all from a single Flutter codebase.</p>
+      </div>
+      <div class="feature">
+        <h3>🔐 Secure Authentication</h3>
+        <p>Protects user data with modern login and JWT-based authentication.</p>
+      </div>
+      <div class="feature">
+        <h3>⚡ Fast & Responsive</h3>
+        <p>Optimized Flutter performance ensures smooth navigation and fast load times.</p>
+      </div>
+      <div class="feature">
+        <h3>🧩 Easy to Extend</h3>
+        <p>Modular backend-ready structure, perfect for scaling and adding new features.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <h2>⚙️ How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>1️⃣ Register</h3>
+        <p>Create an account with your details to access customer features.</p>
+      </div>
+      <div class="step">
+        <h3>2️⃣ Explore Services</h3>
+        <p>Browse and manage services directly from the mobile interface.</p>
+      </div>
+      <div class="step">
+        <h3>3️⃣ Stay Connected</h3>
+        <p>Receive real-time updates and track your requests instantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Eiadtek Customer • Developed by <a href="https://github.com/bakka22" target="_blank">Bakka22</a></p>
+  </footer>
+
+</body>
+</html>
