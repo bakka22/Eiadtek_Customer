@@ -16,6 +16,7 @@ class _SignUpPageState extends State<SignUpPage> {
   // String _selectedRole = 'customer'; // Default value
   final _formKey = GlobalKey<FormState>();
   String? _errorMessage;
+  bool isLoading = false;
 
   Future<void> _signUp() async {
     if (_formKey.currentState!.validate()) {
@@ -32,11 +33,13 @@ class _SignUpPageState extends State<SignUpPage> {
         } else if (status == 0) {
           setState(() {
             _errorMessage = "email already registerd";
+            isLoading = false;
           });
         }
       } catch (e) {
         setState(() {
           _errorMessage = "Network Error";
+          isLoading = false;
         });
       }
     }
@@ -159,7 +162,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 20),
 
                 // Sign Up button
-                ElevatedButton(
+                isLoading
+                ? CircularProgressIndicator()
+                : ElevatedButton(
                   onPressed: _signUp,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(

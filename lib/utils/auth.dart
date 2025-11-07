@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Utility class for authentication actions such as register and login.
 /// Place this file under `lib/utils/auth.dart`.
 class AuthService {
-  static const String baseUrl = 'https://nonlacteous-percussively-dylan.ngrok-free.dev/auth';
+  static const String baseUrl =
+      'https://nonlacteous-percussively-dylan.ngrok-free.dev/auth';
 
   /// Registers a new user by sending a JSON body to FastAPI.
   static Future<int> registerUser({
@@ -19,11 +20,7 @@ class AuthService {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-          'role': role,
-        }),
+        body: jsonEncode({'email': email, 'password': password, 'role': role}),
       );
 
       if (response.statusCode == 200) {
@@ -48,10 +45,7 @@ class AuthService {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: {
-          'email': email,
-          'password': password,
-        },
+        body: {'email': email, 'password': password},
       );
 
       if (response.statusCode == 200) {

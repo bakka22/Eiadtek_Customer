@@ -16,6 +16,7 @@ class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   String? _errorMessage;
   bool isLoading = false;
+  bool isLoadingGuest = false;
 
   Future<void> _signIn() async {
     if (_formKey.currentState!.validate()) {
@@ -39,6 +40,29 @@ class _SignInPageState extends State<SignInPage> {
     } else {
       setState(() {
         isLoading = false;
+      });
+    }
+  }
+
+  Future<void> _signInGuest() async {
+    final status = await AuthService.loginUser(
+        email: "guest@eiadtek.com",
+        password: "12345",
+    );
+    final prefs = await SharedPreferences.getInstance();
+    if (status == 200) {
+      await prefs.setBool('isLoggedIn', true);
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/home');
+    } else if (status == 2) {
+      setState(() {
+        _errorMessage = 'Network error, check your internet connection';
+        isLoadingGuest = false;
+      });
+    } else {
+      _errorMessage = 'Server Error';
+      setState(() {
+        isLoadingGuest = false;
       });
     }
   }
@@ -76,7 +100,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: Colors.black,
                         ), // softer white
                         filled: true,
-                        fillColor:  Colors.white, // light translucent box
+                        fillColor: Colors.white, // light translucent box
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.circular(12),
@@ -127,27 +151,33 @@ class _SignInPageState extends State<SignInPage> {
                         style: const TextStyle(color: Colors.red),
                       ),
                     const SizedBox(height: 20),
-                    isLoading ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(1, 85, 96, 1), // 🖤 black button
-                        foregroundColor: Colors.white, // 🤍 white text
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 14,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          isLoading = true;
-                        });
-                        _signIn();
-                        },
-                      child: const Text("تسجيل الدخول"),
-                    ),
+                    isLoading
+                        ? const CircularProgressIndicator()
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(
+                                1,
+                                85,
+                                96,
+                                1,
+                              ), // 🖤 black button
+                              foregroundColor: Colors.white, // 🤍 white text
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 14,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              _signIn();
+                            },
+                            child: const Text("تسجيل الدخول"),
+                          ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -160,6 +190,34 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ],
                     ),
+                    SizedBox(height: 10,),
+                    isLoadingGuest
+                        ? const CircularProgressIndicator()
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(
+                                1,
+                                85,
+                                96,
+                                1,
+                              ), // 🖤 black button
+                              foregroundColor: Colors.white, // 🤍 white text
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 14,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isLoadingGuest = true;
+                              });
+                              _signInGuest();
+                            },
+                            child: const Text("الدخول كضيف"),
+                          ),
                   ],
                 ),
               ),

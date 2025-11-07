@@ -22,14 +22,12 @@ class ClinicDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final base_url =
         "https://nonlacteous-percussively-dylan.ngrok-free.dev/clinics/picture/";
-
     return Scaffold(
       appBar: AppBar(title: Text(clinic['name'] ?? 'Clinic Details')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
             clinic['picture_filename'] != ''
@@ -60,24 +58,26 @@ class ClinicDetailsPage extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    final locationLink = clinic['location_link'];
-                    if (locationLink != null && locationLink.isNotEmpty) {
-                      _launchUrl(locationLink);
-                    }
-                  },
-                  child: Row(
-                    children: [
-                      Text(clinic['address']),
-                      const Icon(
-                        Icons.location_pin, // 📍 pin icon
-                        color: Colors.blue,
-                        size: 22,
-                      ),
-                    ],
+                if (clinic['location_link'] != null &&
+                    clinic['location_link'].isNotEmpty)
+                  GestureDetector(
+                    onTap: () {
+                      final locationLink = clinic['location_link'];
+                      if (locationLink != null && locationLink.isNotEmpty) {
+                        _launchUrl(locationLink);
+                      }
+                    },
+                    child: Row(
+                      children: [
+                        Text(clinic['address']),
+                        const Icon(
+                          Icons.location_pin, // 📍 pin icon
+                          color: Colors.blue,
+                          size: 22,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
             const SizedBox(height: 10),
@@ -89,85 +89,76 @@ class ClinicDetailsPage extends StatelessWidget {
                 textDirection: TextDirection.rtl,
               ),
             const SizedBox(height: 10),
-            // Clickable Email
-            if (clinic['email'] != null && clinic['email'].isNotEmpty)
-              Row(
-                children: [
-                  Text("ايميل: "),
-                  GestureDetector(
-                    onTap: () {
-                      final email = clinic['email'];
-                      if (email != null && email.isNotEmpty) {
-                        _launchUrl("mailto:$email");
-                      }
-                    },
-                    child: Text(
-                      "${clinic['email'] ?? 'N/A'}",
-                      textDirection: TextDirection.ltr,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            const SizedBox(height: 10),
-
             // Clickable Phone
             if (clinic['phone_number'] != null &&
                 clinic['phone_number'].isNotEmpty)
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("الهاتف: "),
-                  GestureDetector(
-                    onTap: () {
-                      if (clinic['phone_number'] != null &&
-                          clinic['phone_number'].isNotEmpty) {
-                        _launchUrl("tel:${clinic['phone_number']}");
-                      }
-                    },
-                    child: Text(
-                      clinic['phone_number'],
-                      textDirection: TextDirection.ltr,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
+                  const Text("الهاتف: "),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 8,
+                      runSpacing: 4,
+                      children: [
+                        ...clinic['phone_number']
+                            .split('-') // Split by dash
+                            .map((number) => number.trim()) // Remove spaces
+                            .where(
+                              (number) => !number.isEmpty,
+                            ) // Filter out empty parts
+                            .map(
+                              (number) => GestureDetector(
+                                onTap: () => _launchUrl("tel:$number"),
+                                child: Text(
+                                  number,
+                                  textDirection: TextDirection.ltr,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ],
                     ),
                   ),
                 ],
               ),
-            const SizedBox(height: 10),
 
+            const SizedBox(height: 10),
             if (clinic['whatsapp_number'] != null &&
                 clinic['whatsapp_number'].isNotEmpty)
-              Row(
+              Column(
                 children: [
-                  Text("واتساب: "),
-                  GestureDetector(
-                    onTap: () {
-                      if (clinic['whatsapp_number'] != null &&
-                          clinic['whatsapp_number'].isNotEmpty) {
-                        final number = clinic['whatsapp_number'];
-                        _launchUrl("https://wa.me/$number");
-                      }
-                    },
-                    child: Text(
-                      clinic['whatsapp_number'],
-                      textDirection: TextDirection.ltr,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
+                  Row(
+                    children: [
+                      Text("واتساب: "),
+                      GestureDetector(
+                        onTap: () {
+                          if (clinic['whatsapp_number'] != null &&
+                              clinic['whatsapp_number'].isNotEmpty) {
+                            final number = clinic['whatsapp_number'];
+                            _launchUrl("https://wa.me/$number");
+                          }
+                        },
+                        child: Text(
+                          clinic['whatsapp_number'],
+                          textDirection: TextDirection.ltr,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
+                  const SizedBox(height: 10),
                 ],
               ),
-            const SizedBox(height: 10),
             if (clinic["additional_info"] != null &&
                 clinic['additional_info'].isNotEmpty)
               Text(
@@ -183,6 +174,14 @@ class ClinicDetailsPage extends StatelessWidget {
                     clinic['whatsapp_number'].isNotEmpty) {
                   final number = clinic['whatsapp_number'];
                   _launchUrl("https://wa.me/$number");
+                } else if (clinic['phone_number'] != null &&
+                    clinic['phone_number'].isNotEmpty) {
+                  final number = clinic['phone_number']
+                      .split('-') // Split by dash
+                      .map((number) => number.trim()) // Remove spaces
+                      .where((number) => !number.isEmpty)
+                      .toList()[0];
+                  _launchUrl("tel:$number");
                 }
               },
               child: const Text("احجز موعد"),
