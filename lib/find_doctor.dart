@@ -79,7 +79,6 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
     final type = args['type'];
     selectedtype = type;
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
 
     final selectedStateObj = states.firstWhere(
       (s) => s['en'] == selectedState,
@@ -198,21 +197,21 @@ class _FindDoctorPageState extends State<FindDoctorPage> {
                   SizedBox(height: screenHeight * 0.15),
                   Divider(thickness: 2),
                   SizedBox(height: screenHeight * 0.05),
-                  Row(
-                    children: [
-                      for (int i = 0; i < 4; i++)
-                        Padding(
-                          padding:
-                              EdgeInsets.only(right: screenWidth * 0.02),
-                          child: Image.asset(
-                            'assets/clinic_placeholder.jpg',
-                            width: screenWidth * 0.2,
-                            height: screenHeight * 0.1,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     for (int i = 0; i < 4; i++)
+                  //       Padding(
+                  //         padding:
+                  //             EdgeInsets.only(right: screenWidth * 0.02),
+                  //         child: Image.asset(
+                  //           'assets/clinic_placeholder.jpg',
+                  //           width: screenWidth * 0.2,
+                  //           height: screenHeight * 0.1,
+                  //           fit: BoxFit.cover,
+                  //         ),
+                  //       ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),

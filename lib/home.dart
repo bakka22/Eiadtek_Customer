@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text("Profile"),
+              title: const Text("الملف الشخصي"),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/profile');
@@ -40,10 +40,18 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text("Settings"),
+              title: const Text("الاعدادات"),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/settings');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.mail),
+              title: const Text("تواصل معنا"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/contact');
               },
             ),
             const Divider(),

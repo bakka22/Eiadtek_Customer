@@ -10,6 +10,7 @@ import 'doctor_details.dart';
 import 'signup.dart';
 import 'theme/colors.dart';
 import 'splash_screen.dart'; // ✅ Add this import
+import 'contact_us.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         '/doctors_list': (context) => const DoctorsListPage(),
         '/profile': (context) => const ProfilePage(),
         '/settings': (context) => const SettingsPage(),
+        '/contact': (context) => const ContactUsPage(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/clinic_details') {
